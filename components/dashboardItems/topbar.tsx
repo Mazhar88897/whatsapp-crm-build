@@ -5,6 +5,7 @@ import { ChevronDown , ChevronUp ,   User, Settings, LogOut, HelpCircle } from "
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { getSessionStorageItem, clearSessionStorage } from "@/lib/utils";
 
 const menuOptions = [
   { icon: <User className="w-4 h-4 mr-2" />, text: "Chats", href: "/flow/chats" },
@@ -19,8 +20,7 @@ export default function Topbar() {
   const router = useRouter();
 
   const getUserName = () => {
-    // const user = JSON.parse(sessionStorage.getItem('userName') || '{}')
-    return sessionStorage.getItem('userName')
+    return getSessionStorageItem('userName')
   }
 
   return (
@@ -60,7 +60,7 @@ export default function Topbar() {
             <Button
               variant="destructive"
               onClick={() => {
-                sessionStorage.clear()
+                clearSessionStorage()
                 router.push('/auth/sign-in');
                 setLogoutOpen(false);
                 // Add your logout logic here

@@ -25,7 +25,7 @@ import {
   ChevronDown,
   ChevronRight
 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, getSessionStorageItem, clearSessionStorage } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import clsx from "clsx"
@@ -53,7 +53,7 @@ interface SidebarProps {
 export function Sidebar({ className }: SidebarProps) {
   const router = useRouter()
   useEffect(() => {
-    const userLoginData = sessionStorage.getItem('userLoginData')
+    const userLoginData = getSessionStorageItem('userLoginData')
     if (!userLoginData) {
       router.push('/auth/sign-in')
     }
@@ -70,14 +70,11 @@ export function Sidebar({ className }: SidebarProps) {
 
   // Get user role from session
   const getUserRole = () => {
-    if (typeof window !== 'undefined') {
-      const userRole = sessionStorage.getItem('userRole')
-      if (userRole) {
-        return userRole.toLowerCase()
-      }
-      
+    const userRole = getSessionStorageItem('userRole')
+    if (userRole) {
+      return userRole.toLowerCase()
     }
-  
+    return null
   }
 
   // Dynamic navigation based on user role
@@ -453,7 +450,7 @@ export function Sidebar({ className }: SidebarProps) {
             <Button
               variant="destructive"
               onClick={() => {
-               sessionStorage.clear()
+               clearSessionStorage()
                router.push("/auth/sign-in")
               }}
             >

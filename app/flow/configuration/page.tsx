@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner"
 import { RefreshCw, Eye, EyeOff, Copy, Check, Trash2 } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
+import { getSessionStorageItem } from "@/lib/utils"
 // Types for the API responses
 type Model = {
   id: number
@@ -53,7 +54,7 @@ export default function ConfigurationPage() {
 
   // Get tenant ID from session storage or use default
   const tenantId = useMemo(() => {
-    const storedTenantId = sessionStorage.getItem('tenantID')
+    const storedTenantId = getSessionStorageItem('tenantID')
     return storedTenantId ? parseInt(storedTenantId, 10) : 1 // Default to tenant 1 if not found
   }, [])
 
