@@ -23,6 +23,14 @@ interface SidebarProps {
   className?: string
 }
 
+interface MenuItem {
+  icon?: any
+  label: string
+  link?: string
+  component?: () => JSX.Element
+  hasSeparator?: boolean
+}
+
 export default function Sidebar({ className }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
@@ -61,12 +69,12 @@ export default function Sidebar({ className }: SidebarProps) {
     }
   }
 
-  const mainMenuItems = [
+  const mainMenuItems: MenuItem[] = [
     { icon: Home, label: "Home", link: "/dashboard" },
-    { component: ThemeToggle, label: "Theme" },
+    { component: ThemeToggle, label: "Theme", hasSeparator: true },
     { icon: Bell, label: "Notification" },
   ]
-  const logoutItem = { icon: LogOut, label: "Logout" }
+  const logoutItem: MenuItem = { icon: LogOut, label: "Logout" }
   
 
   return (
@@ -100,7 +108,7 @@ export default function Sidebar({ className }: SidebarProps) {
         <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
           {mainMenuItems.map((item, index) => (
             <div key={index}>
-              {item.hasSeparator && <Separator className="my-2" />}
+          
               
               {item.component ? (
                 // If item has a component -> render the component
