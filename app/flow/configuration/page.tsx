@@ -54,7 +54,7 @@ export default function ConfigurationPage() {
   // Get tenant ID from session storage or use default
   const tenantId = useMemo(() => {
     const storedTenantId = sessionStorage.getItem('tenantID')
-  
+    return storedTenantId ? parseInt(storedTenantId, 10) : 1 // Default to tenant 1 if not found
   }, [])
 
   // Get base URL with fallback
