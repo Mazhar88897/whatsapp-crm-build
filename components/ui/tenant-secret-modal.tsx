@@ -89,7 +89,7 @@ export function TenantSecretModal({ isOpen, onClose, tenantSecret, tenantName }:
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
             <p className="text-sm text-blue-800">
-              <strong>Important:</strong> Save this tenant secret code securely. You'll need it to access your tenant.
+              <strong>Important:</strong> Save this tenant secret code securely. You&apos;ll need it to access your tenant.
             </p>
           </div>
         </div>

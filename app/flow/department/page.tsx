@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -71,7 +71,7 @@ export default function DepartmentPage() {
     }
   }, [tenantID])
 
-  const fetchDepartments = async () => {
+  const fetchDepartments = useCallback(async () => {
     try {
       setLoading(true)
       setError(null)
@@ -168,7 +168,7 @@ export default function DepartmentPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [tenantID, autoRetryEnabled, retryCount])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -277,7 +277,7 @@ export default function DepartmentPage() {
             {error.includes('No tenant ID found') && (
               <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
                 <p className="text-sm text-yellow-800">
-                  This usually means you need to sign in again. The page will automatically retry when you're signed in.
+                  This usually means you need to sign in again. The page will automatically retry when you&apos;re signed in.
                 </p>
               </div>
             )}
@@ -339,7 +339,7 @@ export default function DepartmentPage() {
               <Building2 className="w-8 h-8 text-blue-600" />
               Departments
             </h1>
-            <p className="text-gray-600 mt-2">Manage your organization's departments</p>
+            <p className="text-gray-600 mt-2">Manage your organization&apos;s departments</p>
           </div>
           
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
