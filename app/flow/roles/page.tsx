@@ -145,10 +145,10 @@ const RolesPage = () => {
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Access Denied</h1>
           <p className="text-gray-600 mb-6">
-            You don't have permission to access this page or your role is not defined.
+            You don&apos;t have permission to access this page or your role is not defined.
           </p>
           <p className="text-sm text-gray-500">
-            Current role: {userRole || 'Not set'}
+            Current role: {userRole || &apos;Not set&apos;}
           </p>
         </div>
       </div>

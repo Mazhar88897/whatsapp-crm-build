@@ -66,7 +66,7 @@ export default function AgentsPage() {
             <th className="p-3">Name</th>
             <th className="p-3">Organization role</th>
             <th className="p-3">Reporting manager</th>
-            <th className="p-3">WABA's assigned</th>
+            <th className="p-3">WABA&apos;s assigned</th>
             <th className="p-3">Number</th>
             <th className="p-3">Status</th>
           </tr>

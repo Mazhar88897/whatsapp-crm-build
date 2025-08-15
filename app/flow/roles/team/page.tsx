@@ -474,7 +474,7 @@ export default function TeamRolePage() {
       fetchDepartments()
     }
     setLoading(false)
-  }, [tenantId])
+  }, [tenantId, fetchRoles, fetchTeam, fetchDepartments])
 
   if (loading) {
     return (
