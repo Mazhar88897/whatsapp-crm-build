@@ -148,7 +148,7 @@ const RolesPage = () => {
             You don&apos;t have permission to access this page or your role is not defined.
           </p>
           <p className="text-sm text-gray-500">
-            Current role: {userRole || &apos;Not set&apos;}
+            Current role: {userRole || 'Not set'}
           </p>
         </div>
       </div>
